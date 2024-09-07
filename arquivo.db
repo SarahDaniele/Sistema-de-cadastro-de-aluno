@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS centro_comunitario;
+USE centro_comunitario;
+
+CREATE TABLE alunos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    curso VARCHAR(100) NOT NULL,
+    data_matricula DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE frequencia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    aluno_id INT,
+    data_presenca DATE NOT NULL,
+    presenca ENUM('Presente', 'Ausente') NOT NULL,
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id)
+);
